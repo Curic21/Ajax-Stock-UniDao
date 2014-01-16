@@ -134,9 +134,6 @@ public class UsuarioDao_Mysql implements UsuarioDao {
                 oUsuario.setId(0);
             } else {
                 oUsuario.setId(Integer.parseInt(strId));
-                oUsuario.setPassword(oMysql.getOne("usuario", "password", oUsuario.getId()));
-                oUsuario.setNombre(oMysql.getOne("usuario", "nombre", oUsuario.getId()));
-                oUsuario.setEmail(oMysql.getOne("usuario", "email", oUsuario.getId()));
             }
             oMysql.desconexion();
             return oUsuario;
@@ -145,14 +142,14 @@ public class UsuarioDao_Mysql implements UsuarioDao {
         }
     }
 
-    @Override
+        @Override
     public ArrayList<String> getColumnsNames() throws Exception {
-        ArrayList<String> alColumns = null;
+        ArrayList<String> alColumns=null;
         try {
             oMysql.conexion(enumTipoConexion);
-            alColumns = oMysql.getColumnsName("usuario", Conexion.getDatabaseName());
+            alColumns=oMysql.getColumnsName("usuario", Conexion.getDatabaseName());
             oMysql.desconexion();
-
+            
         } catch (Exception e) {
             throw new Exception("UsuarioDao.getColumnsNames: Error: " + e.getMessage());
         } finally {
@@ -160,5 +157,5 @@ public class UsuarioDao_Mysql implements UsuarioDao {
         }
         return alColumns;
     }
-
+    
 }
