@@ -12,10 +12,10 @@ package net.rafaelaznar.operaciones;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import net.rafaelaznar.bean.TipoproductoBean;
 import com.google.gson.Gson;
 import net.rafaelaznar.dao.TipoproductoDao;
+
 import net.rafaelaznar.helper.Conexion;
 
 public class TipoproductoGet implements GenericOperation {
