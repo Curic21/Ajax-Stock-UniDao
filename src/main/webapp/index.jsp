@@ -13,7 +13,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Ajax Stock</title>
+        <title>Ajax Stock uniDAO</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -29,10 +29,10 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 
-        
-                <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-        
+
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -48,7 +48,7 @@
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>
                     </a> 
-                    <a class="brand" href="jsp">Ajax Stock</a>                   
+                    <a class="brand" href="jsp">Ajax Stock uniDAO</a>                   
                     <div class="nav-collapse collapse">
                         <%if (user != null) {%>
                         <jsp:include page="jsp/menuSuperior.jsp" />   
@@ -116,38 +116,9 @@
         <script src="js/control/compra.js" charset="UTF-8"></script>
 
         <script>
-            /* Inicialización en español para la extensión 'UI date picker' para jQuery. */
-            /* Traducido por Vester (xvester [en] gmail [punto] com). */
-            jQuery(function($) {
-                $.datepicker.regional['es'] = {
-                    closeText: 'Cerrar',
-                    buttonImage: 'img/calendar.png',
-                    prevText: '<Ant',
-                    nextText: 'Sig>',
-                    currentText: 'Hoy',
-                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
-                    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
-                    weekHeader: 'Sm',
-                    dateFormat: 'dd/mm/yy',
-                    firstDay: 1,
-                    isRTL: false,
-                    showMonthAfterYear: false,
-                    yearSuffix: ''};
-                $.datepicker.setDefaults($.datepicker.regional['es']);
-            });
 
-            //para solucionar el bug de la autollamada recursiva 
-            //muy dificil de encontrar y depurar
-            //dos modales a la vez se pasan el foco de una a la otra
-            //https://github.com/twbs/bootstrap/issues/4781
-            //https://github.com/makeusabrew/bootbox/issues/60
-            $(document).on('show', '.modal', function() {
-                $(document).off('focusin.modal');
-            });
             $(document).ready(function() {
+                inicializacion();
                 $('#lnkCliente').unbind('click');
                 $('#lnkCliente').click(function() {
                     var cliente = objeto('cliente', '<%=request.getContextPath()%>');

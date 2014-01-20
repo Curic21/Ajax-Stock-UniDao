@@ -155,8 +155,10 @@ var vista = function(objeto, ContextPath) {
                 tabla += '<tr>';
                 $.each(objeto.getPrettyFieldNamesAcciones(), function(index, value) {
                     tabla += '<th>' + value;
-                    tabla += '<a class="orderAsc' + index + '" href="#"><i class="icon-arrow-up"></i></a>';
-                    tabla += '<a class="orderDesc' + index + '" href="#"><i class="icon-arrow-down"></i></a>';
+                    if (value != "acciones") {
+                        tabla += '<a class="orderAsc' + index + '" href="#"><i class="icon-arrow-up"></i></a>';
+                        tabla += '<a class="orderDesc' + index + '" href="#"><i class="icon-arrow-down"></i></a>';
+                    }
                     tabla += '</th>';
                 });
                 tabla += '</tr>';
@@ -168,15 +170,18 @@ var vista = function(objeto, ContextPath) {
                 $.each(objeto.getFieldNames(), function(index, valor) {
                     if (/id_/.test(valor)) {
                         $.when(ajaxCallSync(ContextPath + '/json?ob=' + valor.split("_")[1] + '&op=get&id=' + value[valor], 'GET', '')).done(function(data) {
-                            
+
                             contador = 0;
-                            add_tabla="";
+                            add_tabla = "";
                             for (key in data) {
                                 if (contador == 0)
                                     add_tabla = '<td>id=' + data[key] + '(no existe)</td>';
                                 if (contador == 1)
                                     add_tabla = '<td>' + data[key] + '</td>';
                                 contador++;
+                            }
+                            if (contador == 0) {
+                                add_tabla = '<td>' + value[valor] + ' #error</td>';
                             }
                             tabla += add_tabla;
                         });

@@ -12,7 +12,8 @@ import net.rafaelaznar.helper.Conexion;
  * @author rafa
  */
 public class CompraDao extends GenericDaoImplementation<CompraBean> {
+
     public CompraDao(Conexion.Tipo_conexion tipoConexion) throws Exception {
-        super(tipoConexion,"compra");
+        super(tipoConexion, "compra");
     }
 }
